@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.use(express.text())
+app.use(express.urlencoded())
 
 app.use('/public', express.static(`${process.cwd()}/public`));
 
