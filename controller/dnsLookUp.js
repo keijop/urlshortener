@@ -8,7 +8,7 @@ const dnsLookUp = (req,res) => {
   console.log(host)
 
 	dns.lookup(host, (err, address) => {
-		let result = err ? { error: 'invalid url' } : { original_url : host, short_url : 1, address : address}
+		let result = err ? { error: 'invalid url' } : { original_url : host, short_url : 1}
 		res.json(result)
 	})
 }
