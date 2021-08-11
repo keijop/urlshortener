@@ -12,16 +12,4 @@ const dnsLookUp = (req,res) => {
 	res.status(200).json(result)
 }
 
-// const dnsLookUp = (req,res) => {
-
-// 	let host = req.body.url
-
-//   console.log(host)
-
-// 	dns.lookup(host, (err, addresses) => {
-// 		let result = err ? { error: 'invalid url' } : { original_url : host, short_url : 1, addresses: addresses}
-// 		res.json(result)
-// 	})
-// }
-
 module.exports = dnsLookUp

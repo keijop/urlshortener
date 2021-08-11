@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const dnsLookUp = require('./controller/dnsLookUp')
+const connectDB = require('./db/connect.js')
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
@@ -25,6 +26,18 @@ app.get('/api/hello', function(req, res) {
 
 app.post('/api/shorturl', dnsLookUp)
 
-app.listen(port, function() {
-  console.log(`Listening on port ${port}`);
-});
+const startServer = async () => {
+  try{
+    await connectDB(process.env.MONGO_URI)
+    app.listen(port, function() {
+      console.log(`Listening on port ${port}`)
+      console.log(`Hello there, ${process.env.MY_STRING}`)
+      });
+  }catch(error){
+    console.log(error)
+  }
+}
+
+startServer()
+
+
