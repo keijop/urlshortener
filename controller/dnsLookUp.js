@@ -3,9 +3,9 @@ const validUrl = require('valid-url')
 
 const dnsLookUp = (req,res) => {
 
-	let uriFromForm = req.body.url
+	let urlFromForm = req.body.url
 
-	let urlCheck = validUrl.isWebUri(uriFromForm)
+	let urlCheck = validUrl.isWebUri(urlFromForm)
 
 	let result = urlCheck ? {original_url : urlCheck, short_url : 1} : { error: 'invalid url' }
 
