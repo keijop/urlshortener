@@ -26,7 +26,7 @@ app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });
 });
 
-app.get('/api/:shorturl', urlRedirect)
+app.get('/api/shorturl/:shorturl', urlRedirect)
 
 app.post('/api/shorturl', dnsLookUp)
 
