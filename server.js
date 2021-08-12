@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const dnsLookUp = require('./controller/dnsLookUp')
 const createUrl = require('./controller/createUrl')
+const urlRedirect = require('./controller/urlRedirect')
 const connectDB = require('./db/connect.js')
 
 // Basic Configuration
@@ -24,6 +25,8 @@ app.get('/api/hello', function(req, res) {
   
   res.json({ greeting: 'hello API' });
 });
+
+app.get('/api/:shorturl', urlRedirect)
 
 app.post('/api/shorturl', dnsLookUp)
 
