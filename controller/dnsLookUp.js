@@ -1,19 +1,15 @@
-
-const validUrl = require('valid-url')
+const isUrlValid = require('../utils/isUrlValid.js')
 const Url = require('../model/Url.js')
 const createShortUrl = require('../utils/createShortUrl.js')
 
 const dnsLookUp = async (req,res) => {
 
-	const urlFromForm = req.body.url
-	const urlCheck = validUrl.isWebUri(urlFromForm) //returns url or undefined
-
 	//not valid url
-	if(!urlCheck){
+	if(!isUrlValid(req.body.url)){
 		return res.status(200).json({ error: 'invalid url' })
 	} else{ 
 
-	const url = await Url.findOne({url : urlCheck})
+	const url = await Url.findOne({url : isUrlValid(req.body.url)})
 
 	//url does not exist in DB
 	if(!url){
